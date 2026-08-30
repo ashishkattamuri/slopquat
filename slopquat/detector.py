@@ -19,6 +19,7 @@ import urllib.parse
 import urllib.request
 from dataclasses import dataclass, field, asdict
 from datetime import datetime, timezone
+from pathlib import Path
 
 from .corpus import (
     IMPORT_TO_DIST,
@@ -305,7 +306,7 @@ class Detector:
 
     def scan_file(self, path: str) -> list[Finding]:
         findings = []
-        name = path.rsplit("/", 1)[-1].lower()
+        name = Path(path).name.lower()
         if name == "requirements.txt":
             findings = [self.check(dep, "python", f"{path}:{ln}")
                         for ln, dep in parse_requirements(path)]
