@@ -1,0 +1,5 @@
+numpy>=1.24
+requests
+python-docs-scraper==0.1.2
+cv2
+langchain-communiy
